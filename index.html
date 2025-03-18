@@ -8,30 +8,92 @@
     </head>
 
     <body>
-        <header class="flex flex-row justify-between bg-slate-400">
+        <header class="h-12 flex flex-row justify-between bg-slate-400">
             <div>
-                <h3 class="text-xl">Listo</h3>
+                <h3 class="text-xl">List</h3>
             </div>
-            <div class="flex flex-row box-content size-10 gap-8">
-                <img class="rounded-full" src="./images/gear.png" id="settings">
-                <img class="rounded-full outline-3 outline-slate-700" src="./images/mtech-logo.png" id="profile">
+            <div class="flex flex-row size-10">
+                <img class="rounded-full m-1" src="./images/gear.png" id="settings">
+                <img class="rounded-full outline-3 outline-slate-700 m-1" src="./images/mtech-logo.png" id="profile">
             </div>
         </header>
 
         <div class="columns-2 flex flex-row" id="mainBody">
 
             <div class="basis-1/5 bg-slate-100" id="sideBar">
-                <input class="rounded-sm bg-white outline outline-slate-400">
-                <div>
-                    <button class="bg-slate-500 text-white">Enter</button>
-                </div>
+                <form class="m-4 bg-white outline outline-slate-400" action="">
+                    <input type="text" 
+                    class="flex content-stretch outline outline-sky-400"
+                    id="new-task"
+                    placeholder="New List"
+                    aria-label="new list name"
+                    />
+                </form>
+                <button class="ml-4 pl-2 pr-2 rounded-sm bg-slate-500 text-white" id="btn-task" aria-label="create new list">Create new list</button>
+                <li class="pl-2 pr-2 ml-4 mr-4 mb-2 mt-2 bg-gray-400">School Tasks</li>
+                <li class="pl-2 pr-2 ml-4 mr-4 mb-2 mt-2">other</li>
             </div>
 
             <div class="basis-4/5" id="mainContent">
-                <h1 class="text-5xl">test</h1>
-                <div id="tasksLocation">
-                    <p>This is where the tasks will go.</p>
+                
+                <h1 class="m-6 text-5xl">School Tasks</h1>
+
+                <form class="m-4 bg-white outline outline-black" action="">
+                    <input type="text" 
+                    class="outline outline-sky-400"
+                    id="new-task"
+                    placeholder="New Task"
+                    aria-label="new task name"
+                    />
+                </form>
+                <button class="ml-4 mb-6 pl-2 pr-2 rounded-sm bg-slate-500 text-white" id="btn-task" aria-label="create new list">Create new task</button>
+
+                <div id="todo-body">
+                    <div class="ml-4 mr-4 mt-2 outline outline-black flex justify-between" id="tasks">
+                        <div class="m-2" id="task">
+                            <input 
+                            type="checkbox"
+                            id="task-1"
+                            />
+                            <label for="task-1">Math</label>
+                        </div>
+                        <div>
+                            <button class="m-2 text-gray-400" id="delete-task">X</button>
+                        </div>
+                    </div>
+                    <!-- task 1 -->
+                    <div class="ml-4 mr-4 mt-2 outline outline-black flex justify-between" id="tasks">
+                        <div class="m-2" id="task">
+                            <input 
+                            type="checkbox"
+                            id="task-2"
+                            />
+                            <label for="task-2">English</label>
+                        </div>
+                        <div>
+                            <button class="m-2 text-gray-400" id="delete-task">X</button>
+                        </div>
+                    </div>
+                    <!-- task 2 -->
+                    <div class="ml-4 mr-4 mt-2 outline outline-black flex justify-between" id="tasks">
+                        <div class="m-2" id="task">
+                            <input 
+                            type="checkbox"
+                            id="task-3"
+                            />
+                            <label for="task-3">Coding</label>
+                        </div>
+                        <div>
+                            <button class="m-2 text-gray-400" id="delete-task">X</button>
+                        </div>
+                    </div>
+                    <!-- task 3 -->
+                    <div class="m-4" id="delete-tasks">
+                        <button class="pl-2 pr-2 rounded-sm outline outline-black bg-slate-200 text-black" id="btn-delete">Clear completed tasks</button>
+                        <button class="pl-2 pr-2 rounded-sm outline outline-black bg-slate-200 text-black" id="btn-delete">Clear whole list</button>
+                    </div>
                 </div>
+
             </div>
             
         </div>
