@@ -1,65 +1,67 @@
 const lists = {
     1: {
-        name: "School Tasks",
+        listName: "School Tasks",
         tasks: [
             {
                 text: 'Math',
-                completed: false
+                completed: false,
+                id: 1
             },
             {
                 text: 'English',
-                completed: false
+                completed: false,
+                id: 2
             },
             {
                 text: 'Coding',
-                completed: false
+                completed: false,
+                id: 3
             },
         ]
     },
     2: {
-        name: "Shopping List",
+        listName: "Shopping List",
         tasks: [
             {
                 text: 'Apples',
-                completed: false
+                completed: false,
+                id: 4
             },
             {
                 text: 'Oranges',
-                completed: false
+                completed: false,
+                id: 5
             },
             {
                 text: 'Bannanas',
-                completed: false
+                completed: false,
+                id: 6,
             }
         ]
     }
 }
 
-const currentList = lists[1];
+let currentList = lists[1];
 
 function render() {
     // this will hold the html that will be displayed in the sidebar
-    let listsHtml = '<ul class="list-group">';
+    let listsHtml = `<ul id="todo-list">`;
     // iterate through the lists to get their names
-    lists.forEach((list) => {
-      listsHtml += `<li class="pl-2 pr-2 ml-4 mr-4 mb-2 mt-2 bg-gray-300">${list.name}</li>`;
-    });
-   
-    listsHtml += '</ul>';
-    // print out the lists
-   
-    document.getElementById('lists').innerHTML = listsHtml;
-    // print out the name of the current list
-   
-    document.getElementById('current-list-name').innerText = currentList.name;
-    // iterate over the todos in the current list
-   
-    let tasksHtml = '<div class="ml-4 mr-4 mt-2 outline outline-black flex justify-between task-body"';
     currentList.tasks.forEach((list) => {
-      tasksHtml += `<label class="list-group-item">${task.text}</label>`;
-    });
-    // print out the todos
-    document.getElementById('current-list-tasks').innerHTML = tasksHtml;
+      listsHtml += `<li class="ml-4 mr-4 mt-2 outline outline-black flex justify-between task-body" id="${Math.random()}task">
+                         <div class="m-2">
+                            <input 
+                            type="checkbox"
+                            id="${Math.random()}check"
+                            onclick="check(${this.id, list.text})"/>
+                            <label class="list-group-item">${list.text}</label>
+                        </div>
+                        <div>
+                            <button class="m-2 text-gray-400 delete-task" onclick="removeTasks(${list.id})">X</button>
+                        </li>`;
+    });//not a function?????????????????????????????????????????????????????????????????????????????????
+    listsHtml += '</ul>';
+    document.getElementById('todo-body').innerHTML = listsHtml;
    }
 
    function addList () {
@@ -77,22 +79,42 @@ function render() {
 
    function addTasks() {
     const text = document.getElementById('new-task').value;
+    console.log(currentList.tasks)
     if(text) {
       currentList.tasks.push({
         text: text,
-        completed: false
+        completed: false,
+        id: Math.random() + Math.random()
       })
-      console.log(currentList.task);
       render();
     }
-    console.log(`nothin' added`);
    }//add function for enter key
 
-   function checkbox(id){
-    let box = documen.getElementById()
+   function check(id){
+    let box = document.getElementById(id);
+    console.log(box);
    }
 
-   function removeTasks () {}
+   function removeTasks(id){
+        let temparry = currentList.tasks;
+        let index;
+        for (let i = 0; i < temparry.length; i++) {
+            const element = temparry[i];
+            if (element.id == id) {
+                index = i;
+                console.log(index + "index");
+                console.log(element.text);
+            }
+            else{
+                index = null;
+            }
+            
+        }
+        let x = temparry.splice(index, 1);
+        console.log(x[0]);
+        currentList = temparry;
+        // render();
+    }
 
    function removeAllCompletedTasks () {}
 
@@ -101,4 +123,4 @@ function render() {
    function save() {
     localStorage.setItem('currentList', JSON.stringify(currentList)); 
     localStorage.setItem('lists', JSON.stringify(lists));
-   }
+   }//is this function needed?
